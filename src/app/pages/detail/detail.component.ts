@@ -26,7 +26,6 @@ export class DetailComponent implements OnInit {
     this.loading = true;
     try {
       const res = await this.characterService.getCharacter(characterId);
-      console.log(res);
       this.character = res.data.results[0];
     } catch (error) {
       console.log(error);
