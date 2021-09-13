@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
       this.filteredCharacters = this.characters;
       this.totalCharacters = res.data.total;
     } catch (error) {
+      alert('An error has occurred, please try again.');
       console.log(error);
     }
     this.loading = false;
