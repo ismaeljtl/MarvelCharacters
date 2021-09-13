@@ -1,0 +1,47 @@
+<div class="container">
+    <app-header></app-header>
+
+    <div class="row mt-5 mb-3">
+        <a routerLink="/" class="link"> <img src="assets/img/back.svg" alt="Back icon"> Go back</a>
+    </div>
+
+    <div class="row" *ngIf="loading">
+        <app-loader></app-loader>
+    </div>
+
+    <div class="row character" *ngIf="!loading">
+        <div class="col-md-8 col-sm-12">
+            <img src="{{character.thumbnail.path}}/standard_fantastic.{{character.thumbnail.extension}}" alt="Character image">
+            <h1 class="title"><strong> {{ character.name }} </strong></h1>
+
+            <p *ngIf="character.description !== ''" class="card-text">{{character.description}}</p>
+            <p *ngIf="character.description === ''" class="card-text">This character has no description at the moment.</p>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <h5 class="title"><strong>Some stories of {{ character.name }}</strong></h5>
+            <div *ngIf="character.stories.items.length !== 0">
+                <span class="badge rounded-pill bg-danger" *ngFor="let story of character.stories.items">{{ story.name }}</span>
+            </div>
+            <div *ngIf="character.stories.items.length === 0">
+                <p>This character has no stories at the moment.</p>
+            </div>
+
+            <h5 class="title mt-3"><strong>Some events of {{ character.name }}</strong></h5>
+            <div *ngIf="character.events.items.length !== 0">
+                <span class="badge rounded-pill bg-warning" *ngFor="let event of character.events.items">{{ event.name }}</span>
+            </div>
+            <div *ngIf="character.events.items.length === 0">
+                <p>This character has no events at the moment.</p>
+            </div>
+
+            <h5 class="title mt-3"><strong>Some series of {{ character.name }}</strong></h5>
+            <div *ngIf="character.series.items.length !== 0">
+                <span class="badge rounded-pill bg-light" *ngFor="let serie of character.series.items">{{ serie.name }}</span>
+            </div>
+            <div *ngIf="character.series.items.length === 0">
+                <p>This character has no series at the moment.</p>
+            </div>
+        </div>
+    </div>
+
+</div>

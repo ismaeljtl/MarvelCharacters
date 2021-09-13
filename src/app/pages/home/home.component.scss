@@ -1,0 +1,80 @@
+h1 {
+    color: #ECEDFF;
+}
+
+.container {
+    position: relative;
+    .input {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 42px;
+        input {
+            background-color: #5F6187;
+            width: 300px;
+            border: 1px solid #5e6187;
+            border-radius: 8px 0 0 8px;
+            padding: .25rem .5rem;
+            color: #ecedfe;
+        }
+        input::placeholder {
+            color: #ECEDFF;
+        }
+        button {
+            background-color: #FF515A;
+            border-radius: 0 8px 8px 0;
+            border: none;
+            padding: 0 1rem;
+        }
+    }
+}
+
+.card {
+    border: none;
+    background-color: #ECEDFF;
+    color: #262847;
+    img {
+        object-fit: cover;
+        height: 100%;
+    }
+    .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-text {
+        display: -webkit-box;
+        max-height: 48px;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+    }
+    .view-more {
+        font-weight: bold;
+        text-decoration: none;
+        color: #262847;
+    }
+}
+
+.pagination {
+    width: 100%;
+    justify-content: center;
+    color: #ECEDFF;
+}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        margin-top: 3.5rem !important;
+    }
+    .container {
+        .input {
+            top: 5rem;
+            left: 0.75rem;
+            input { width: calc(100% - 72px); }
+        }
+    }
+    .characters {
+        margin-top: 1.5rem;
+    }
+}

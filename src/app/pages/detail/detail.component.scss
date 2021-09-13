@@ -1,0 +1,40 @@
+.link {
+    color: #ecedfe;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    img { margin-right: .5rem; }
+}
+
+.title, p {
+    color: #ECEDFF;
+}
+
+.character {
+    img {
+        width: 100%;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        border: 4px solid #EECC55;
+    }
+    .badge {
+        padding: .5em .75em;
+        margin-right: .5rem;
+        margin-bottom: .15rem;
+    }
+    .bg-light {
+        background-color: #ecedfe;
+        color: #262847;
+    }
+    .bg-warning {
+        background-color: #EECC55;
+        color: #262847;
+    }
+    .bg-danger, .btn-danger {
+        background-color: #FF515A;
+        color: #ecedfe;
+    }
+    button {
+        width: 100%;
+    }
+}
