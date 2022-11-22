@@ -1,41 +1,63 @@
 <div class="container">
-    <app-header></app-header>
+  <app-header></app-header>
 
-    <div class="input">
-        <input type="text" placeholder="Search for a character" (input)="filter($event)" />
-        <button><img src="assets/img/search.svg" alt="Search icon"></button>
-    </div>
+  <div class="input">
+    <input
+      type="text"
+      placeholder="Search for a character"
+      (input)="filter($event)"
+    />
+    <button><img src="assets/img/search.svg" alt="Search icon" /></button>
+  </div>
 
-    <h1 class="mt-4 mb-3">Characters</h1>
+  <h1 class="mt-4 mb-3">Characters</h1>
 
-    <div class="row" *ngIf="loading">
-        <app-loader></app-loader>
-    </div>
-    
-    <div class="row characters" *ngIf="!loading">
-        <div 
-            class="col-md-4" 
-            *ngFor="let character of filteredCharacters | 
-            paginate: { itemsPerPage: 30, currentPage: p, totalItems: totalCharacters }"
-        >
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-4">
-                        <img src="{{character.thumbnail.path}}/standard_large.{{character.thumbnail.extension}}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{character.name}}</h5>
-                            <p *ngIf="character.description !== ''" class="card-text">{{character.description}}</p>
-                            <p *ngIf="character.description === ''" class="card-text">This character has no description at the moment.</p>
-                            <a [routerLink]="['/detail', character.id]" class="view-more"><small>View more...</small></a>
-                        </div>
-                    </div>
-                </div>
+  <div class="row" *ngIf="loading">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="row characters" *ngIf="!loading">
+    <div
+      class="col-md-4"
+      *ngFor="
+        let character of filteredCharacters
+          | paginate
+            : { itemsPerPage: 30, currentPage: p, totalItems: totalCharacters }
+      "
+    >
+      <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-4">
+            <img
+              src="{{ character.thumbnail.path }}/standard_large.{{
+                character.thumbnail.extension
+              }}"
+              class="img-fluid rounded-start"
+              alt="..."
+            />
+          </div>
+          <div class="col-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ character.name }}</h5>
+              <p *ngIf="character.description !== ''" class="card-text">
+                {{ character.description }}
+              </p>
+              <p *ngIf="character.description === ''" class="card-text">
+                This character has no description at the moment.
+              </p>
+              <a [routerLink]="['/detail', character.id]" class="view-more"
+                ><small>View more...</small></a
+              >
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <pagination-controls class="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
-
+  <pagination-controls
+    class="pagination"
+    (pageChange)="pageChanged($event)"
+    *ngIf="!loading"
+  ></pagination-controls>
 </div>
